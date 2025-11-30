@@ -14,7 +14,6 @@ import { toast } from 'react-toastify';
 
 const Home = () => {
 
-  // ✅ Fixed typos in options
   const options = [
     { value: 'html-css', label: 'HTML + CSS' },
     { value: 'html-tailwind', label: 'HTML + Tailwind CSS' },
@@ -32,19 +31,17 @@ const Home = () => {
   const [isNewTabOpen, setIsNewTabOpen] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
 
-  // ✅ Extract code safely
   function extractCode(response) {
     const match = response.match(/```(?:\w+)?\n?([\s\S]*?)```/);
     return match ? match[1].trim() : response.trim();
   }
 
-  // ⚠️ API Key (you said you want it inside the file)
   const ai = new GoogleGenAI({
     apiKey:
   import.meta.env.VITE_GOOGLE_GENAI_KEY
   });
 
-  // ✅ Generate code
+
   async function getResponse() {
     if (!prompt.trim()) return toast.error("Please describe your component first");
 
@@ -79,7 +76,6 @@ Requirements:
     }
   };
 
-  // ✅ Copy Code
   const copyCode = async () => {
     if (!code.trim()) return toast.error("No code to copy");
     try {
@@ -91,7 +87,7 @@ Requirements:
     }
   };
 
-  // ✅ Download Code
+
   const downnloadFile = () => {
     if (!code.trim()) return toast.error("No code to download");
 
@@ -110,7 +106,7 @@ Requirements:
     <>
       <Navbar />
 
-      {/* ✅ Better responsive layout */}
+      {/*Better responsive layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 px-6 lg:px-16">
         {/* Left Section */}
         <div className="w-full py-6 rounded-xl bg-[#141319] mt-5 p-5">
@@ -233,7 +229,7 @@ Requirements:
         </div>
       </div>
 
-      {/* ✅ Fullscreen Preview Overlay */}
+      {/* Fullscreen Preview Overlay */}
       {isNewTabOpen && (
         <div className="absolute inset-0 bg-white w-screen h-screen overflow-auto">
           <div className="text-black w-full h-[60px] flex items-center justify-between px-5 bg-gray-100">
